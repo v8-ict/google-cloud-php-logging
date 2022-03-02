@@ -53,7 +53,7 @@ use Psr\Log\LoggerInterface;
  *
  * @see http://www.php-fig.org/psr/psr-3/#psrlogloggerinterface Psr\Log\LoggerInterface
  */
-class PsrLogger implements LoggerInterface, \Serializable
+class PsrLogger implements LoggerInterface
 {
     use BatchTrait;
 
@@ -429,7 +429,7 @@ class PsrLogger implements LoggerInterface, \Serializable
      * @return string
      * @access private
      */
-    public function serialize()
+    public function __serialize()
     {
         $debugOutputResource = null;
         if (is_resource($this->debugOutputResource)) {
@@ -458,7 +458,7 @@ class PsrLogger implements LoggerInterface, \Serializable
      * @param string
      * @access private
      */
-    public function unserialize($data)
+    public function __unserialize($data)
     {
         list(
             $this->messageKey,
